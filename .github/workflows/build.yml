@@ -23,10 +23,18 @@ jobs:
           sed -i '/_nomakepkg_dep_resolution_distro=""/c\_nomakepkg_dep_resolution_distro="debuntu"' customization.cfg
           cat customization.cfg
       
-      - name: Run apt-get update to refresh package index
-        run: sudo apt-get update
+      - name: Enable 32-bit packages and run apt-get update
+        run: |
+          sudo dpkg --add-architecture i386 
+          sudo apt-get update
       
       - name: Build wine-tkg-git
         run: |
           cd wine-tkg-git/wine-tkg-git
           ./non-makepkg-build.sh
+          
+      - name: Upload the newly built Wine as an artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: roblox-wine-build
+          path: ~/wine-tkg-git/wine-tkg-git/non-makepkg-builds
