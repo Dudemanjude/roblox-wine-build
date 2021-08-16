@@ -19,7 +19,7 @@ jobs:
           
       - name: Edit the customization.cfg to download Ubuntu dependencies
         run: |
-          cd wine-tkg-git
+          cd wine-tkg-git/wine-tkg-git
           sed -i '/_nomakepkg_dep_resolution_distro=""/c\_nomakepkg_dep_resolution_distro="debuntu"' customization.cfg
           cat customization.cfg
           
