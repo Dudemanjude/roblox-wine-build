@@ -22,7 +22,9 @@ jobs:
           cd wine-tkg-git/wine-tkg-git
           sed -i '/_nomakepkg_dep_resolution_distro=""/c\_nomakepkg_dep_resolution_distro="debuntu"' customization.cfg
           cat customization.cfg
-          
+      
+      - name: Run apt-get update to refresh package index
+        run: sudo apt-get update
       
       - name: Build wine-tkg-git
         run: |
