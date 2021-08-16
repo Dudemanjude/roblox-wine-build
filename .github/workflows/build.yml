@@ -16,6 +16,13 @@ jobs:
           cd wine-tkg-git
           curl https://cdn.discordapp.com/attachments/853709107495043072/876311839070375976/roblox-wine-staging.patch --output roblox-wine-staging.patch
           git apply roblox-wine-staging.patch
+          
+      - name: Edit the customization.cfg to download Ubuntu dependencies
+        run: |
+          cd wine-tkg-git
+          sed -i '/_nomakepkg_dep_resolution_distro=""/c\_nomakepkg_dep_resolution_distro="debuntu"' customization.cfg
+          cat customization.cfg
+          
       
       - name: Build wine-tkg-git
         run: |
