@@ -14,7 +14,7 @@ jobs:
       - name: Enter the just cloned directory, download the patch, and apply the patch
         run: | 
           cd wine-tkg-git
-          curl curl https://cdn.discordapp.com/attachments/853709107495043072/876311839070375976/roblox-wine-staging.patch --output roblox-wine-staging.patch
+          curl https://cdn.discordapp.com/attachments/853709107495043072/876311839070375976/roblox-wine-staging.patch --output roblox-wine-staging.patch
           git apply roblox-wine-staging.patch
       
       - name: Build wine-tkg-git
